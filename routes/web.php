@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\SpecialityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('medicos', MedicoController::class)->middleware(['auth']);
+Route::resource('specialities', SpecialityController::class)->middleware(['auth']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
