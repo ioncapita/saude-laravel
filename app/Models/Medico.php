@@ -13,6 +13,6 @@ class Medico extends Model
 
 
     public function speciality(){
-        return $this->belongsTo(Speciality::class);
+        return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
 }
